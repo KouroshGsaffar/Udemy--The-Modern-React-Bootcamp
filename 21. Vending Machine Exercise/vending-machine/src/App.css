@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+  background-color: rgba(91, 221, 124, 0.2);;
+}
+
+.Navbar {
+  background: rgba(34, 159, 190, 0.2);
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.Navbar .Navbar-active{
+  color: rgb(150, 37, 37);
+}
+
