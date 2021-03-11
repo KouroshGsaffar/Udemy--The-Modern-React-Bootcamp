@@ -18,7 +18,7 @@ class ColorBox extends Component {
         })
     }
     render() {
-        const { background, name, paletteId, id, moreUrl, showLink } = this.props;
+        const { background, name, moreUrl, showLink } = this.props;
         const { copied } = this.state;
         return (
             <CopyToClipboard text={background} onCopy={this.changeCopyState}>

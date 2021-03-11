@@ -1,5 +1,5 @@
 import { withStyles } from '@material-ui/styles';
-import React, { Component } from 'react'
+import React from 'react'
 
 const styles = {
     root: {

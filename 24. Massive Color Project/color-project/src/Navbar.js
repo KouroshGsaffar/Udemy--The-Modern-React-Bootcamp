@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import { Link } from 'react-router-dom'
 import 'rc-slider/assets/index.css';
-import Slider, { Range } from 'rc-slider';
+import Slider from 'rc-slider';
 import './Navbar.css'
 
 
