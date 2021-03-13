@@ -4,15 +4,15 @@ import EditIcon from '@material-ui/icons/Edit'
 import React from 'react'
 
 
-export default function Todo({ task, completed }) {
+export default function Todo({ task, completed, id, removeTodo, toggleTodo }) {
     return (
         <ListItem>
-            <Checkbox tabIndex={-1} checked={completed} />
+            <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleTodo(id)} />
             <ListItemText style={{ textDecoration: completed && 'line-through' }}>
                 {task}
             </ListItemText>
             <ListItemSecondaryAction>
-                <IconButton aria-label='Delete'>
+                <IconButton aria-label='Delete' onClick={() => removeTodo(id)}>
                     <DeleteIcon />
                 </IconButton>
                 <IconButton aria-label='Edit'>
