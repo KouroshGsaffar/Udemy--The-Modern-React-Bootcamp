@@ -1,20 +1,21 @@
 import React from 'react';
-import { Paper, List, ListItem, Divider, ListItemText } from '@material-ui/core';
+import { Paper, List, Divider } from '@material-ui/core';
 import Todo from './Todo';
 
 function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
-    return (
+    if (todos.length) return (
         <Paper>
             <List>
-                {todos.map(todo => (
+                {todos.map((todo, i) => (
                     <>
                         <Todo task={todo.task} id={todo.id} key={todo.id} completed={todo.completed} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
-                        <Divider />
+                        {i < todos.length - 1 && <Divider />}
                     </>
                 ))}
             </List>
         </Paper>
     )
+    return null;
 }
 
 export default TodoList;

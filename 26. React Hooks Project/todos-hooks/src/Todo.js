@@ -9,7 +9,7 @@ import EditTodoForm from './EditTodoForm'
 export default function Todo({ task, completed, id, removeTodo, toggleTodo, editTodo }) {
     const [isEditing, toggleIsEditing] = useToggleState(false);
     return (
-        <ListItem>
+        <ListItem style={{ height: '64px' }}>
             {isEditing ? (
                 <EditTodoForm task={task} editTodo={editTodo} id={id} toggleEditForm={toggleIsEditing} />
             ) : (
