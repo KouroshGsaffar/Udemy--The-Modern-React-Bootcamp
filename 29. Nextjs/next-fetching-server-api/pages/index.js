@@ -1,19 +1,5 @@
 import axios from 'axios'
-// import React, { Component } from 'react'
-
-// export default class index extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {}
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <h1>Our Index Page!!!</h1>
-//             </div>
-//         )
-//     }
-// }
+import Link from 'next/link'
 
 const Index = ({ posts }) => {
     return (
@@ -21,7 +7,9 @@ const Index = ({ posts }) => {
             <h1>Our Index Page!!!</h1>
             <ul>
                 {posts.map(post => (
-                    <li key={post.id}>{post.title}</li>
+                    <li key={post.id}>
+                        <Link href={`/post?id=${post.id}`}><a>{post.title}</a></Link>
+                    </li>
                 ))}
             </ul>
         </div>
@@ -29,7 +17,6 @@ const Index = ({ posts }) => {
 };
 
 Index.getInitialProps = async () => {
-    // https://jsonplaceholder.typicode.com/posts
     const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
     const { data } = res;
     return { posts: data }
