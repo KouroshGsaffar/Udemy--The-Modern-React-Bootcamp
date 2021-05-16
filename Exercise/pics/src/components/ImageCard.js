@@ -4,7 +4,7 @@ export default class ImageCard extends Component {
     constructor(props) {
         super(props)
         this.state = { spans: 0 }
-        this.imageRef = React.createRef();
+        this.imageRef = createRef();
     }
     componentDidMount() {
         this.imageRef.current.addEventListener('load', this.setSpans)
