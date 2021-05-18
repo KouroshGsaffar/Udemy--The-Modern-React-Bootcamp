@@ -4,7 +4,7 @@ import SearchBar from "./components/SearchBar";
 import VideoList from './components/VideoList';
 
 export default class App extends Component {
-  state = { videos: [] }
+  state = { videos: [], selectedVideo: null }
   onSearchSubmit = async (term) => {
     const response = await youtube.get('/search', {
       params: {
@@ -13,11 +13,15 @@ export default class App extends Component {
     })
     this.setState({ videos: response.data.items })
   }
+
+  onVideoSelect = (video) => {
+    console.log('From the App', video)
+  }
   render() {
     return (
       <div className='ui container'>
         <SearchBar onSubmit={this.onSearchSubmit} />
-        <VideoList videos={this.state.videos} />
+        <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
       </div>
     )
   }
