@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+
 
 export default function Accordion({ items }) {
+
+    const [activeIndex, setActiveIndex] = useState(null)
+
     const handleClick = (index) => {
-        console.log('Title clicked', index)
+        setActiveIndex(index)
     }
     const renderedItems = items.map((item, index) => {
         return <React.Fragment key={item.title}>
@@ -18,6 +23,7 @@ export default function Accordion({ items }) {
     return (
         <div className='ui styled accordion'>
             {renderedItems}
+            <h1>{activeIndex}</h1>
         </div>
     )
 }
