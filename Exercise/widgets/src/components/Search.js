@@ -1,7 +1,39 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import Accordion from './Accordion'
 
 export default function Search() {
-    const [term, setTerm] = useState('')
+    const [term, setTerm] = useState('programming')
+    const [results, setResults] = useState([])
+
+    useEffect(() => {
+        const search = async () => {
+            const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
+                params: {
+                    action: 'query',
+                    list: 'search',
+                    origin: '*',
+                    format: 'json',
+                    srsearch: term
+                }
+            })
+            setResults(data.query.search)
+        }
+
+        search()
+    }, [term])
+
+    const renderedResults = results.map(result => {
+        return <div key={result.pageid} className='item'>
+            <div className='content'>
+                <div className='header'>
+                    {result.title}
+                </div>
+                {result.snippet}
+            </div>
+        </div>
+    })
+
     const handleChnage = (e) => {
         setTerm(e.target.value)
     }
@@ -12,6 +44,9 @@ export default function Search() {
                     <label>Enter Search Term</label>
                     <input className='input' type='text' value={term} onChange={handleChnage} />
                 </div>
+            </div>
+            <div className='ui celled list'>
+                {renderedResults}
             </div>
         </div>
     )
