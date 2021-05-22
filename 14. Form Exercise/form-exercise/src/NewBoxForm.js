@@ -3,20 +3,20 @@ import uuid from 'react-uuid'
 
 
 class NewBoxForm extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={height:'',width:'',color:''}
-        this.handleChange=this.handleChange.bind(this)
-        this.handleSubmit=this.handleSubmit.bind(this)
+        this.state = { height: '', width: '', color: '' }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
-    handleChange(evt){
-        this.setState({[evt.target.name]:evt.target.value});
+    handleChange(evt) {
+        this.setState({ [evt.target.name]: evt.target.value });
     }
-    handleSubmit(evt){
+    handleSubmit(evt) {
         evt.preventDefault()
-        const newBox={...this.state, id:uuid()}
+        const newBox = { ...this.state, id: uuid() }
         this.props.createBox(newBox)
-        this.setState({height:'',width:'',color:''})
+        this.setState({ height: '', width: '', color: '' })
     }
 
     render() {
@@ -25,18 +25,18 @@ class NewBoxForm extends Component {
                 <div>
                     <label htmlFor='height'>Height</label>
                     <input type='text' name='height' id='height'
-                    value={this.state.height}
-                    onChange={this.handleChange}
+                        value={this.state.height}
+                        onChange={this.handleChange}
                     />
                     <label htmlFor='width'>Width</label>
                     <input type='text' name='width' id='width'
-                    value={this.state.width}
-                    onChange={this.handleChange}
+                        value={this.state.width}
+                        onChange={this.handleChange}
                     />
                     <label htmlFor='color'>Color</label>
                     <input type='text' name='color' id='color'
-                    value={this.state.color}
-                    onChange={this.handleChange}
+                        value={this.state.color}
+                        onChange={this.handleChange}
                     />
                 </div>
                 <button>Add New Box!</button>
