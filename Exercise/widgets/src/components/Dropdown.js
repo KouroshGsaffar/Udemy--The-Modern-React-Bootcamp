@@ -1,8 +1,10 @@
 import React from 'react'
 
-export default function Dropdown({ options }) {
+export default function Dropdown({ options, selected, onSelectedChange }) {
     const renderedOptions = options.map(option => {
-        return <div key={option.value} className='item'>{option.label}</div>
+        return <div key={option.value} className='item' onClick={() => onSelectedChange(option)}>
+            {option.label}
+        </div>
     })
     return (
         <div className='ui form'>
@@ -10,7 +12,7 @@ export default function Dropdown({ options }) {
                 <label className='label'>Slect a Color</label>
                 <div className='ui selection dropdown visible active'>
                     <i className='dropdown icon'></i>
-                    <div className='text'>Select Color</div>
+                    <div className='text'>{selected.label}</div>
                     <div className='menu visible transition'>{renderedOptions}</div>
                 </div>
             </div>
