@@ -19,8 +19,15 @@ export default function Search() {
             })
             setResults(data.query.search)
         }
+        const timeoutId = setTimeout(() => {
+            if (term) {
+                search()
+            }
+        }, 500);
 
-        search()
+        return () => {
+            clearTimeout(timeoutId)
+        }
     }, [term])
 
     const renderedResults = results.map(result => {
