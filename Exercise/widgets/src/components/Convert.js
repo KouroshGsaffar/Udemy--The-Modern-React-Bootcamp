@@ -1,0 +1,24 @@
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+
+export default function Convert({ language, text }) {
+    useEffect(() => {
+        // const api=async()=>{
+
+        // }
+        axios.post('https://translation.googleapis.com/language/translate/v2', {}, {
+            params: {
+                q: text,
+                target: language.value,
+                key: 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM'
+            }
+        })
+        // console.log('new language or text');
+
+    }, [language, text])
+    return (
+        <div>
+
+        </div>
+    )
+}
