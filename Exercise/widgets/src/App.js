@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Accordion from "./components/Accordion";
 import Dropdown from "./components/Dropdown";
+import Route from "./components/Route";
 import Search from "./components/Search";
 import Translate from "./components/Translate";
 
@@ -34,18 +35,24 @@ const options = [
   },
 ]
 
+
 function App() {
   const [selected, setSelected] = useState(options[0])
-  // const [showDropdown, setShowDropdown] = useState(true)
+
   return (
-    <div className="App">
-      {/* <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
-      {showDropdown ?
-        <Dropdown options={options} selected={selected} onSelectedChange={setSelected} />
-        : null
-      } */}
-      <Translate />
-      {/* <Search /> */}
+    <div>
+      <Route path='/'>
+        <Accordion items={items} />
+      </Route>
+      <Route path='/list'>
+        <Search />
+      </Route>
+      <Route path='/dropdown'>
+        <Dropdown options={options} selected={selected} onSelectedChange={setSelected} label='Select a Color' />
+      </Route>
+      <Route path='/translate'>
+        <Translate />
+      </Route>
     </div>
   );
 }

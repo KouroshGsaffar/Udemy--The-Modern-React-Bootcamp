@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Accordion from './Accordion'
 
 export default function Search() {
     const [term, setTerm] = useState('programming')
